@@ -1,17 +1,25 @@
 {
-  "id": "./",
   "name": "EMIS 농구 매니저",
   "short_name": "EMIS",
-  "description": "EMIS 농구 매니저 설치형 웹 앱",
-  "lang": "ko-KR",
-  "start_url": "./index.html",
+  "description": "EMIS 농구 매니저 게임",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#0b1020",
-  "theme_color": "#0b1020",
+  "background_color": "#080d18",
+  "theme_color": "#080d18",
   "icons": [
-    {"src":"icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }

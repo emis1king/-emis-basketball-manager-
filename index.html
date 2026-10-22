@@ -228,6 +228,15 @@ for(const n of [1,3,5]){
  if(valid.length!==n){game.selectedLineups[key]=game.players.slice(0,n).map(p=>p.id);}
 }
 if(!game.bonusGoldGiven){game.money=(game.money||0)+10000;game.bonusGoldGiven=true;game.news=game.news||[];game.news.unshift("업데이트 보너스! 구단 지원금 10,000G 지급.");}
+// V46: 초기 골드가 0으로 저장된 구버전 세이브를 한 번만 복구한다. 기존에 골드가 있는 세이브는 변경하지 않는다.
+if(!game.starterGoldRepairV46){
+ if(!Number.isFinite(Number(game.money)) || Number(game.money)<=0){
+  game.money=15000;
+  game.news=Array.isArray(game.news)?game.news:[];
+  game.news.unshift("💰 시작 골드 복구: 15,000G 지급 완료!");
+ }
+ game.starterGoldRepairV46=true;
+}
 game.players.forEach(p=>{if(p.epithet===undefined)p.epithet=p.special||"";if(!p.career)p.career={games:0,points:0,assists:0,rebounds:0,steals:0,blocks:0,mvp:0,championships:0};if(!p.archetype)p.archetype=p.potential>=94?"천재형":p.ovr<68?"미완성형":p.stats&&p.stats.three>=85?"특화형":"노력형";if(p.injuryWeeks===undefined)p.injuryWeeks=0;});
 if(game.seasonGames===undefined)game.seasonGames=game.played%10;if(!game.awards)game.awards=[];if(!game.market)game.market=[];if(!game.championships)game.championships=0;if(!game.playoffSeasons)game.playoffSeasons=[];if(!game.rivalries)game.rivalries={};if(!game.teamName)game.teamName="EMIS 유나이티드";if(!Number.isFinite(game.leagueTier))game.leagueTier=0;if(typeof game.promotionReady!=="boolean")game.promotionReady=false;
 if(!game.market.length)generateMarket(false);
